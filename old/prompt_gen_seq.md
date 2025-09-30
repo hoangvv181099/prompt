@@ -1,7 +1,6 @@
 Act as a system analyst.  
 
 Attached files:
-- instructions.v2.md (rulebook for context)
 - module_a.py
 - module_b.py
 - <thêm file .yaml / .sql nếu cần>

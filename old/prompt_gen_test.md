@@ -1,7 +1,7 @@
 Act as a Python test engineer.  
 
 Attached files:
-- instructions.v2.md (guidelines)
+- instructions.md (guidelines)
 - <list các .py files cần test>
 
 Task:
