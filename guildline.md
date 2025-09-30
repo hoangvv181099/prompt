@@ -167,35 +167,69 @@ You are a Staff Technical Writer. Create a **bilingual (English + Japanese)** Ma
 
 ---
 
-# Prompt 5 — Create Documentation (EN/JP, Friendly)  
+You are a Staff Technical Writer. Create a **bilingual (English + Japanese)** Markdown change document using **clear, friendly language** (short sentences, simple words).
 
+
+### Voice & Style
+- **English:** concise, warm, non-academic. Avoid heavy jargon.
+- **日本語:** やさしい言い回しで、読みやすく。専門用語は必要最小限、説明を短く。
+- Keep both languages in **every section** (English first, then 日本語). Use the exact headings below.
+
+
+### Sections (each section must include EN and JP)
+- **Overview / 概要**
+- **Purpose / 目的**
+- **Base Concept / 基本コンセプト**
+- **Modification List / 変更一覧**
+- **Changed/New Files / 追加・変更されたファイル**
+- Must be in **table format** with columns: Target File | Change Type (Add/Update/Delete) | Scope (summary of functions/modules/LOC added) | Before | After | Notes / 備考
+- If the file has only small changes → show before/after description (1–2 lines).
+- If the file has **large additions (e.g. +500 LOC)** → do not attempt to describe line-by-line. Instead, summarize by *functional groups* (modules, classes, functions) and state total LOC added/changed.
+- Example row: `pipeline/etl_dag.py | Add (+1200 LOC) | New DAG with 5 Operators, retries, SLA configs | N/A | New ETL orchestration code | Affects downstream tables stg_*, fact_*`
+- **Risk & Impact / リスクと影響**
+- **Verification Plan / 検証計画**
+- **Rollback Plan / ロールバック手順**
+- **Testcase List / テストケース一覧** (table with ID, scope, steps, expected)
+- **Glossary / 用語集**
+
+
+### Output Requirements
+- Valid Markdown with H2/H3 sections; **each section has EN and JP blocks** labeled clearly (**English:** / **日本語:**).
+- Use bullet lists, short paragraphs, and friendly tone. Include **assumptions** if any.
+- Changed/New Files table must follow the above rules (summarize large files, not raw dumps).
+
+
+### Input
+<paste diffs or bullets>
 ```prompt
-ROLE: Staff Technical Writer. Produce **bilingual (English + Japanese)** Markdown in friendly, plain language.
+You are a Staff Technical Writer. Create a **bilingual (English + Japanese)** Markdown change document using **clear, friendly language** (short sentences, simple words).
 
-VOICE & STYLE
-- English: short sentences, simple words, supportive tone.
-- 日本語: やさしい言い回し、専門用語は短く説明。長文にしない。
-- Each section contains **both EN & JP** (English first, then 日本語).
 
-SECTIONS (each must have EN + JP blocks)
-1) **Overview / 概要** — what changed and why (≤120 words) / 何をなぜ変えたか
-2) **Purpose / 目的** — business/ops value, success criteria / 価値と成功基準
-3) **Base Concept / 基本コンセプト** — core idea, inputs/outputs, invariants / 仕組み・入出力・不変条件
-4) **Modification List / 変更一覧** — update vs add, how to apply, patch-only diffs / 変更点（更新/追加）、適用方法、差分
-5) **Changed/New Files / 追加・変更ファイル** — path + one-liner / パス + 簡単説明
-6) **Risk & Impact / リスクと影響** — lineage, SLAs, cost, security / 系譜、SLA、コスト、セキュリティ
-7) **Verification Plan / 検証計画** — unit/integration, Airflow `task test`, BigQuery dry-run/EXPLAIN, Jenkins dry-run / テスト/検証
-8) **Rollback Plan / ロールバック手順** — safe revert steps / 安全に戻す手順
-9) **Testcase List / テストケース一覧** — table with ID, scope, steps, expected / テーブル（ID/範囲/手順/期待値）
-10) **Glossary / 用語集** — key EN↔JP terms / 重要用語の対訳
+### Voice & Style
+- **English:** concise, warm, non-academic. Avoid heavy jargon.
+- **日本語:** やさしい言い回しで、読みやすく。専門用語は必要最小限、説明を短く。
+- Keep both languages in **every section** (English first, then 日本語). Use the exact headings below.
 
-OUTPUT REQUIREMENTS
-- Valid Markdown; label blocks with **English:** and **日本語:** inside each section.
-- Use bullets and short paragraphs; include **Assumptions** if any.
 
-INPUTS
-- Diffs/notes/paths: <paste here>
+### Sections (each section must include EN and JP)
+- **Overview / 概要** – What changed and why (≤120 words). / 何をなぜ変えたか（120語以内）。
+- **Purpose / 目的** – Business/ops value, expected outcomes. / ビジネス・運用上の価値と期待する結果。
+- **Modification List / 変更一覧** – update vs add, how-to apply, small code snippets or **patch-only diffs**. / 変更点（更新/追加）、適用方法、短いコードまたは差分。
+- **Changed/New Files / 追加・変更されたファイル** – path + 1‑liner role. / パス + 簡単な説明。
+- **Risk & Impact / リスクと影響** – data lineage, SLAs, runtime/cost, security. / データ系譜、SLA、実行時間/コスト、セキュリティ。
+- **Verification Plan / 検証計画** – unit/integration tests, Airflow `task test`, BigQuery dry‑run/EXPLAIN, Jenkins dry‑run. / ユニット/結合テスト、Airflow、BigQuery ドライラン/EXPLAIN、Jenkins ドライラン。
+- **Rollback Plan / ロールバック手順** – safe revert with steps & signals. / 安全に戻す手順と判断ポイント。
+- **Glossary / 用語集** – key terms EN↔JP (Airflow DAG, partition pruning, etc.). / 重要用語の対訳。
 
+
+### Output Requirements
+- Valid Markdown with H2/H3 sections; **each section has EN and JP blocks** labeled clearly (**English:** / **日本語:**).
+- Use bullet lists, short paragraphs, and friendly tone. Include **assumptions** if any.
+
+
+### Input
+<paste diffs or bullets>
+```
 
 ---
 
