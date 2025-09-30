@@ -137,35 +137,6 @@ STYLE/THEME (use exactly)
 ## 4) Prompt: Auto‑Generate Change Documentation (Bilingual EN/JP, Friendly Tone)
 
 ```prompt
-You are a Staff Technical Writer. Create a **bilingual (English + Japanese)** Markdown change document using **clear, friendly language** (short sentences, simple words).
-
-### Voice & Style
-- **English:** concise, warm, non-academic. Avoid heavy jargon.
-- **日本語:** やさしい言い回しで、読みやすく。専門用語は必要最小限、説明を短く。
-- Keep both languages in **every section** (English first, then 日本語). Use the exact headings below.
-
-### Sections (each section must include EN and JP)
-- **Overview / 概要** – What changed and why (≤120 words). / 何をなぜ変えたか（120語以内）。
-- **Purpose / 目的** – Business/ops value, expected outcomes. / ビジネス・運用上の価値と期待する結果。
-- **Modification List / 変更一覧** – update vs add, how-to apply, small code snippets or **patch-only diffs**. / 変更点（更新/追加）、適用方法、短いコードまたは差分。
-- **Changed/New Files / 追加・変更されたファイル** – path + 1‑liner role. / パス + 簡単な説明。
-- **Risk & Impact / リスクと影響** – data lineage, SLAs, runtime/cost, security. / データ系譜、SLA、実行時間/コスト、セキュリティ。
-- **Verification Plan / 検証計画** – unit/integration tests, Airflow `task test`, BigQuery dry‑run/EXPLAIN, Jenkins dry‑run. / ユニット/結合テスト、Airflow、BigQuery ドライラン/EXPLAIN、Jenkins ドライラン。
-- **Rollback Plan / ロールバック手順** – safe revert with steps & signals. / 安全に戻す手順と判断ポイント。
-- **Glossary / 用語集** – key terms EN↔JP (Airflow DAG, partition pruning, etc.). / 重要用語の対訳。
-
-### Output Requirements
-- Valid Markdown with H2/H3 sections; **each section has EN and JP blocks** labeled clearly (**English:** / **日本語:**).
-- Use bullet lists, short paragraphs, and friendly tone. Include **assumptions** if any.
-
-### Input
-<paste diffs or bullets>
-```
-
----
-
-
----
 
 You are a Staff Technical Writer. Create a **bilingual (English + Japanese)** Markdown change document using **clear, friendly language** (short sentences, simple words).
 
@@ -229,6 +200,38 @@ You are a Staff Technical Writer. Create a **bilingual (English + Japanese)** Ma
 
 ### Input
 <paste diffs or bullets>
+```
+
+# 5 Prompt: Test Policy & Test Cases
+```prompt
+Act as a QA Lead. Produce a **bilingual (English + Japanese)** test strategy and concrete test cases using **clear, friendly language**.
+
+
+### Voice & Style
+- **English:** simple, direct, supportive.
+- **日本語:** わかりやすく、親しみやすい表現。長文にしない。
+- Every section must include **both EN and JP** (English first, then 日本語).
+
+
+### Deliverables (each item bilingual)
+1) **Test Policy / テスト方針** — unit, integration, contract, E2E, performance for Airflow/PySpark/BigQuery. Include scope, exit criteria, coverage targets (≥85%).
+- **English:** policy text and bullets.
+- **日本語:** 同じ内容をやさしい日本語で。
+2) **Pytest Test Cases / Pytest テストケース** — fixtures, parametrization, example code blocks (comments bilingual).
+- Provide a **Given/When/Then** table with EN/JP columns.
+3) **Data‑Contract Checks / データ契約チェック** — schema (types/nullability), ranges/enums, row‑count tolerances; include **BigQuery SQL assertions**.
+4) **CI Gates (Jenkins) / CI ゲート（Jenkins）** — fail conditions, required steps (ruff, mypy, bandit, sqlfluff, pytest), artifact/report paths.
+5) **Environment Matrix / 環境マトリクス** — dev/stage/prod: what to test where; data volume notes.
+
+
+### Output Format
+- Markdown with H2/H3; **each subsection has English and 日本語 blocks** labeled (**English:** / **日本語:**).
+- Include at least: a **policy paragraph**, a **test case table**, **sample pytest code** (with bilingual comments), and **SQL assertions**.
+- Keep tone friendly and practical; avoid stiff formal language.
+
+
+### Inputs
+- Scope of change + key functions/queries.
 ```
 
 ---
