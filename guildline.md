@@ -52,6 +52,7 @@ You are a Distinguished Engineer and Security-first Reviewer auditing the follow
 
 ## 2) Prompt: Create a New Function (e.g., Integrate Pytest with TestRail API)
 
+```prompt
 ROLE: You are a Distinguished Engineer. Deliver production-ready code with tests and docs.
 
 CONTEXT
@@ -96,11 +97,12 @@ OUTPUT FORMAT (in this exact order)
 INPUT ARTIFACTS
 - Existing code references (optional): <paths/snippets>
 
-
+```
 ---
 
 ## 3) Prompt: Generate a Sequence Diagram From Code
 
+```prompt
 ROLE: Systems Architect. Extract runtime interactions and render a readable, themed diagram.
 
 SCOPE
@@ -129,7 +131,7 @@ STYLE/THEME (use exactly)
   }
 }}%%
 
-
+```
 ---
 
 ## 4) Prompt: Auto‑Generate Change Documentation (Bilingual EN/JP, Friendly Tone)
