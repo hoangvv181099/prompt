@@ -1,4 +1,4 @@
-Draw diagrams(System Architecture, Sequence Diagram, Flowcharts)  for {system/topic here} in Mermaid with a clean, modern style similar to Google Docs.  
+Draw diagrams(System Architecture, Sequence Diagram, Flowcharts)  for {system/topic or attach files like code} in Mermaid with a clean, modern style similar to Google Docs.  
 The diagrams must be parser-safe for draw.io / Confluence Mermaid editor.
 
 ⚠️ Error-avoidance rules (very important):
