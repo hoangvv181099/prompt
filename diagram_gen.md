@@ -23,7 +23,7 @@ The diagrams must be parser-safe for draw.io / Confluence Mermaid editor.
    - `[( )]` for storage/databases  
 9. For long text, use `<br>` line breaks.
 10. Avoid parentheses in text when using `( )` shaped nodes.
--11. Use `_` instead of `/` or parentheses in node text.
+11. Use `_` instead of `/` or parentheses in node text.
 12. Fix broken quote nodes → use `ID["Text"]`.
 🎨 Always prepend this **Google Docs style theme block**:
 
